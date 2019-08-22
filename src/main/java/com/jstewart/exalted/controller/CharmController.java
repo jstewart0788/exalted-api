@@ -1,11 +1,11 @@
 package com.jstewart.exalted.controller;
 
+import java.util.List;
+
 import com.jstewart.exalted.exception.ResourceNotFoundException;
 import com.jstewart.exalted.model.Charm;
 import com.jstewart.exalted.repository.CharmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -17,8 +17,8 @@ public class CharmController {
     private CharmRepository charmRepository;
 
     @GetMapping("/charms")
-    public Page<Charm> getCharm(Pageable pageable) {
-        return charmRepository.findAll(pageable);
+    public List<Charm> getCharm() {
+        return charmRepository.findAll();
     }
 
 
