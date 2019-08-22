@@ -39,7 +39,7 @@ public class CharmController {
     }
 
     @DeleteMapping("/charms/{charmId}")
-    public ResponseEntity<?> charmQuestion(@PathVariable Long charmId) {
+    public ResponseEntity<?> deleteCharm(@PathVariable Long charmId) {
         return charmRepository.findById(charmId)
                 .map(charm -> {
                     charmRepository.delete(charm);
