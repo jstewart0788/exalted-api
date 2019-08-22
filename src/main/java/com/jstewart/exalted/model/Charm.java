@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.jstewart.exalted.enumerations.Types;
+import com.jstewart.exalted.enumerations.Durations;
+
 @Entity
 @Table(name = "charms")
 public class Charm extends AuditModel {
@@ -19,6 +22,14 @@ public class Charm extends AuditModel {
     @NotBlank
     @Size(min = 3, max = 100)
     private String title;
+
+    @NotBlank
+    @Size(min = 3, max = 100)
+    private Types type;
+
+    @NotBlank
+    @Size(min = 3, max = 100)
+    private Durations duration;
 
     @Column(columnDefinition = "text")
     private String description;

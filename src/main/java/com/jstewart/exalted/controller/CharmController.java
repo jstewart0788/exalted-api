@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
+import com.jstewart.exalted.enumerations.Types;
+import com.jstewart.exalted.enumerations.Durations;
+
 @RestController
 public class CharmController {
 
@@ -45,5 +48,15 @@ public class CharmController {
                     charmRepository.delete(charm);
                     return ResponseEntity.ok().build();
                 }).orElseThrow(() -> new ResourceNotFoundException("Charm not found with id " + charmId));
+    }
+
+    @ModelAttribute("types")
+    public Types[] getTypes() {
+        return Types.values();
+    }
+
+    @ModelAttribute("durations")
+    public Durations[] getDurations() {
+        return Durations.values();
     }
 }
