@@ -30,16 +30,16 @@ public class CharmController {
         return charmRepository.save(charm);
     }
 
-    @PutMapping("/charms/{charmId}")
-    public Charm updateCharm(@PathVariable Long charmId,
-                                   @Valid @RequestBody Charm charmRequest) {
-        return charmRepository.findById(charmId)
-                .map(charm -> {
-                    charm.setTitle(charmRequest.getTitle());
-                    charm.setDescription(charmRequest.getDescription());
-                    return charmRepository.save(charm);
-                }).orElseThrow(() -> new ResourceNotFoundException("Charm not found with id " + charmId));
-    }
+//    @PutMapping("/charms/{charmId}")
+//    public Charm updateCharm(@PathVariable Long charmId,
+//                                   @Valid @RequestBody Charm charmRequest) {
+//        return charmRepository.findById(charmId)
+//                .map(charm -> {
+//                    charm.setName(charmRequest.getName());
+//                    charm.setDescription(charmRequest.getDescription());
+//                    return charmRepository.save(charm);
+//                }).orElseThrow(() -> new ResourceNotFoundException("Charm not found with id " + charmId));
+//    }
 
     @DeleteMapping("/charms/{charmId}")
     public ResponseEntity<?> deleteCharm(@PathVariable Long charmId) {
