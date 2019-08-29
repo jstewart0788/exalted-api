@@ -5,6 +5,7 @@ import java.util.List;
 import com.jstewart.exalted.exception.ResourceNotFoundException;
 import com.jstewart.exalted.model.Charm;
 import com.jstewart.exalted.repository.CharmRepository;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,14 @@ public class CharmController {
 
 
     @PostMapping("/charms")
-    public Charm createCharm(@Valid @RequestBody Charm charm) {
-        return charmRepository.save(charm);
+    public Boolean createCharm(@Valid @RequestBody List<Charm> charmList) {
+        try{
+            for(Charm charm : charmList){
+                charmRepository.save(charm);
+            }
+            return true;
+        }catch(Exception e){}
+        return false;
     }
 
 //    @PutMapping("/charms/{charmId}")

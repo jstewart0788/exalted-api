@@ -61,6 +61,7 @@ public class Charm extends AuditModel {
     private short page;
 
     @NotBlank
+    @Lob
     private String description;
 
     /*  Getters and Setters */
