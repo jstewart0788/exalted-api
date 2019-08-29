@@ -12,7 +12,6 @@ import javax.validation.constraints.Size;
 import com.jstewart.exalted.enumerations.Types;
 import com.jstewart.exalted.enumerations.Durations;
 
-
 @Entity
 @Table(name = "charms")
 public class Charm extends AuditModel {
@@ -21,11 +20,7 @@ public class Charm extends AuditModel {
 
     @Id
     @GeneratedValue(generator = "charm_generator")
-    @SequenceGenerator(
-            name = "charm_generator",
-            sequenceName = "charm_sequence",
-            initialValue = 1000
-    )
+    @SequenceGenerator(name = "charm_generator", sequenceName = "charm_sequence", initialValue = 1000)
     private Long id;
 
     @NotBlank
@@ -55,7 +50,7 @@ public class Charm extends AuditModel {
     private Durations duration;
 
     @ElementCollection
-    private Map<String, Integer> prerequisite = new HashMap<String, Integer>();
+    private List<String> prerequisite = new ArrayList<String>();
 
     @NotNull
     private short page;
@@ -64,7 +59,10 @@ public class Charm extends AuditModel {
     @Lob
     private String description;
 
-    /*  Getters and Setters */
+    @Lob
+    private String descriptionWithAura;
+
+    /* Getters and Setters */
 
     public Long getId() {
         return id;
@@ -130,12 +128,12 @@ public class Charm extends AuditModel {
         this.duration = duration;
     }
 
-    public Map<String, Integer> getPrerequisite() {
+    public List<String> getPrerequisite() {
         return this.prerequisite;
     }
 
-    public void setPrerequisite(String name, Integer value) {
-        this.prerequisite.put(name, value);
+    public void setPrerequisite(List<String> prerequisite) {
+        this.prerequisite = prerequisite;
     }
 
     public short getPage() {
@@ -152,5 +150,13 @@ public class Charm extends AuditModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDescriptionWithAura() {
+        return descriptionWithAura;
+    }
+
+    public void setDescriptionWithAura(String descriptionWithAura) {
+        this.descriptionWithAura = descriptionWithAura;
     }
 }
