@@ -29,10 +29,10 @@ public class Charm extends AuditModel {
 
     @NotNull
     @ElementCollection
-    private Map<String, Integer> mins = new HashMap<String, Integer>();
+    private Map<String, String> mins = new HashMap<String, String>();
 
     @ElementCollection
-    private Map<String, Integer> costs = new HashMap<String, Integer>();
+    private Map<String, String> costs = new HashMap<String, String>();
 
     @NotNull
     @ElementCollection
@@ -50,7 +50,7 @@ public class Charm extends AuditModel {
     private Durations duration;
 
     @ElementCollection
-    private List<String> prerequisite = new ArrayList<String>();
+    private List<String> prerequisites = new ArrayList<String>();
 
     @NotNull
     private short page;
@@ -80,19 +80,19 @@ public class Charm extends AuditModel {
         this.name = name;
     }
 
-    public Map<String, Integer> getMins() {
+    public Map<String, String> getMins() {
         return this.mins;
     }
 
-    public void setMins(String name, Integer value) {
+    public void setMins(String name, String value) {
         this.mins.put(name, value);
     }
 
-    public Map<String, Integer> getCosts() {
+    public Map<String, String> getCosts() {
         return this.costs;
     }
 
-    public void setCosts(String name, Integer value) {
+    public void setCosts(String name, String value) {
         this.costs.put(name, value);
     }
 
@@ -128,12 +128,12 @@ public class Charm extends AuditModel {
         this.duration = duration;
     }
 
-    public List<String> getPrerequisite() {
-        return this.prerequisite;
+    public List<String> getPrerequisites() {
+        return this.prerequisites;
     }
 
-    public void setPrerequisite(List<String> prerequisite) {
-        this.prerequisite = prerequisite;
+    public void setPrerequisites(List<String> prerequisites) {
+        this.prerequisites = prerequisites;
     }
 
     public short getPage() {
