@@ -20,13 +20,13 @@ public class CharmController {
     @Autowired
     private CharmRepository charmRepository;
 
-    @GetMapping("/charms")
+    @GetMapping("/api/charms")
     public List<Charm> getCharm() {
         return charmRepository.findAll();
     }
 
 
-    @PostMapping("/charms")
+    @PostMapping("/api/charms")
     public Boolean createCharm(@Valid @RequestBody List<Charm> charmList) {
         try{
             for(Charm charm : charmList){
@@ -37,7 +37,7 @@ public class CharmController {
         return false;
     }
 
-//    @PutMapping("/charms/{charmId}")
+//    @PutMapping("/api/charms/{charmId}")
 //    public Charm updateCharm(@PathVariable Long charmId,
 //                                   @Valid @RequestBody Charm charmRequest) {
 //        return charmRepository.findById(charmId)
@@ -48,7 +48,7 @@ public class CharmController {
 //                }).orElseThrow(() -> new ResourceNotFoundException("Charm not found with id " + charmId));
 //    }
 
-    @DeleteMapping("/charms/{charmId}")
+    @DeleteMapping("/api/charms/{charmId}")
     public ResponseEntity<?> deleteCharm(@PathVariable Long charmId) {
         return charmRepository.findById(charmId)
                 .map(charm -> {
